@@ -1,8 +1,10 @@
 # Open Deep Research
 
-An AI-powered research assistant that performs iterative, deep research on any topic by combining search engines, web scraping, and large language models. If you like this project, please consider starring it and giving me a follow on [X](https://x.com/dzhng).
+An AI-powered research assistant that performs iterative, deep research on any topic by combining search engines, web scraping, and large language models.
 
 The goal of this repo is to provide the simplest implementation of a deep research agent - e.g. an agent that can refine its research direction overtime and deep dive into a topic. Goal is to keep the repo size at <500 LoC so it is easy to understand and build on top of.
+
+If you like this project, please consider starring it and giving me a follow on [X/Twitter](https://x.com/dzhng). This project is sponsored by [Aomni](https://aomni.com).
 
 ## How It Works
 
@@ -81,6 +83,8 @@ flowchart TB
 
 ## Setup
 
+### Node.js
+
 1. Clone the repository
 2. Install dependencies:
 
@@ -96,6 +100,17 @@ FIRECRAWL_KEY="your_firecrawl_key"
 # FIRECRAWL_BASE_URL="http://localhost:3002"
 
 OPENAI_KEY="your_openai_key"
+```
+
+### Docker
+
+1. Clone the repository
+2. Rename `.env.example` to `.env.local` and set your API keys
+
+3. Run the Docker image:
+
+```bash
+docker compose run --rm deep-research
 ```
 
 ## Usage
@@ -127,6 +142,15 @@ The final report will be saved as `output.md` in your working directory.
 If you have a paid version of Firecrawl or a local version, feel free to increase the `ConcurrencyLimit` in `deep-research.ts` so it runs a lot faster.
 
 If you have a free version, you may sometime run into rate limit errors, you can reduce the limit (but it will run a lot slower).
+
+### Custom endpoints and models
+
+There are 2 other optional env vars that lets you tweak the endpoint (for other OpenAI compatible APIs like OpenRouter or Gemini) as well as the model string.
+
+```bash
+OPENAI_ENDPOINT="custom_endpoint"
+OPENAI_MODEL="custom_model"
+```
 
 ## How It Works
 
